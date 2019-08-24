@@ -1,0 +1,37 @@
+/* Landing */
+
+.loginLayout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    margin: 2rem 0;
+  }
+
+  h3 {
+    margin: 1rem 0;
+  }
+
+}
+
+.landingBtns {
+  display: flex;
+  flex-basis: 5rem;
+  justify-content: space-around;
+  align-items: center;
+
+  Button {
+    margin: 2rem;
+  }
+  
+}
+
+/* Register */
+
+.linkLogin {
+  display: flex;
+  justify-content: center;
+  flex-basis: 10rem;
+}
