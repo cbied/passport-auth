@@ -5,7 +5,7 @@ const express = require('express'),
     mongoose = require('mongoose'),
     { SERVER_PORT } = process.env;
     
-// app.use(express.json())
+
 
 // DB Config
 const db = require('../config/keys').MongoURI
@@ -18,6 +18,9 @@ mongoose.connect(db, { useNewUrlParser: true })
 // EJS middleware
 app.use(expressLayouts)
 app.set('view engine', 'ejs')
+
+// body parser middleware
+app.use(express.urlencoded({ extended: false }))
 
 // Routes
 app.use('/', require('./routes/index'));
