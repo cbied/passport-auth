@@ -55,7 +55,29 @@ router.post('/register', (req,res) => {
                         password2
                     })
                 } else {
+                    const newUser = new User({
+                        name,
+                        email,
+                        password
+                    })
                     
+
+                    // hash password
+                    brcypt.genSalt(12, (err, salt) => {
+                        brcypt.hash(newUser.password, salt, (err,hash) => {
+                            if(err) throw err
+
+                            // set password to hash
+                            newUser.password = hash
+                            // save user
+                            newUser.save()
+                                .then(user => {
+                                    req.flash('success_msg', 'You are not registered and can log in!')
+                                    res.redirect('/users/login')
+                                })
+                                .catch(err => console.log(err))
+                        })
+                    })
                 }
             })
     }
